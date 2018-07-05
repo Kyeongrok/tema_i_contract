@@ -3,6 +3,7 @@ pragma solidity ^0.4.0;
 contract ReserveToken {
 
     mapping(address => Reserve) public reserves;
+    mapping(address => Room) public rooms;
 
     struct Reserve{
         string from;
@@ -15,6 +16,7 @@ contract ReserveToken {
     }
 
     event NewReserve(address _address, string from, string to);
+    event RegistRoom(address _address, string _title, uint price);
 
 
     function ReserveToken(){
@@ -34,9 +36,13 @@ contract ReserveToken {
 
     function reserveOf(address _address) public {
         return reserves[_address];
-
     }
 
+    function registRoom(string _title, uint _price) public{
+        Room storage room = rooms[msg.sender];
+        room.title = _title;
+        room.price = _price;
 
-
+        emit RegistRoom(msg.sender, _title, _price);
+    }
 }
