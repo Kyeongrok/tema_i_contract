@@ -50,6 +50,4 @@ contract ReserveToken {
         emit RegistRoom(msg.sender, _title, _price);
     }
 
-
-
 }
