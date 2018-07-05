@@ -5,6 +5,8 @@ contract ReserveToken {
     mapping(address => Reserve) public reserves;
     mapping(address => Room) public rooms;
 
+    Room[] public roomByIndex;
+
     struct Reserve{
         string from;
         string to;
@@ -43,6 +45,11 @@ contract ReserveToken {
         room.title = _title;
         room.price = _price;
 
+        roomByIndex.push(room);
+
         emit RegistRoom(msg.sender, _title, _price);
     }
+
+
+
 }
