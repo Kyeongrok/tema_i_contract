@@ -1,0 +1,45 @@
+{
+  "name": "team_i_contract",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "babel-node index.js",
+    "start2": "babel-node index2.js",
+    "build": "babel index.js",
+    "babel-version": "babel --version"
+  },
+  "keywords": [
+    "solidity",
+    "eth",
+    "geth",
+    "ethereum",
+    "parity",
+    "node",
+    "cli"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kyeongrok/tema_i_contract.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kyeongrok/tema_i_contract/issues"
+  },
+  "homepage": "https://github.com/Kyeongrok/tema_i_contract#readme",
+  "dependencies": {
+    "big-number": "^0.4.0",
+    "solc": "^0.4.16",
+    "web3": "0.20.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-2": "^6.11.0",
+    "babel-register": "^6.11.6"
+  }
+}
