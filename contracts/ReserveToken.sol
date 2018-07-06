@@ -25,13 +25,10 @@ contract ReserveToken {
 
     }
 
-    function reserve(address _address, String _from, String _to){
-        NewReserve storage reserve = animals[_address];
+    function reserve(address _address, string _from, string _to){
+        NewReserve storage reserve = reserves[_address];
         reserve.from = _from;
         reserve.to = _to;
-
-        // 돈을 빼간다 _address
-        // 돈을 너준다
 
         emit NewReserve(_address, _from, _to);
     }

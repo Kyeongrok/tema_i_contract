@@ -9,6 +9,7 @@
   "scripts": {
     "start": "babel-node index.js",
     "start2": "babel-node index2.js",
+    "test": "truffle test",
     "build": "babel index.js",
     "babel-version": "babel --version"
   },
