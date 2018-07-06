@@ -9,10 +9,16 @@ contract('Room', (accounts) => {
 
     it("regist and get Room Test", () => {
         return Room.deployed().then(instance => {
-            instance.registRoom("room2", 100);
-            instance.myAccount().then(addr => {
+            instance.registRoom("room3", 200);
+            return instance.myAccount().then(addr => {
+                return instance.roomByIndex(0).then(room=>{
+                    console.log("room0:", room);
+                })
+
+
                 instance.rooms(addr).then(room=>{
-                    // assert.equal('room2', room[1]);
+                    console.log(addr);
+                     assert.equal('room3', room[1]);
                 });
             });
 
