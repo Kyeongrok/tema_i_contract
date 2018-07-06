@@ -19,7 +19,6 @@ contract Room {
 
     }
 
-
     function roomCount() public view returns (uint) {
         return roomByIndex.length;
     }
@@ -33,14 +32,6 @@ contract Room {
         roomByIndex.push(room);
 
         emit RegistRoom(msg.sender, _title, _price);
-    }
-
-    function getRoomName(address _address) public view returns(string){
-        return rooms[_address].title;
-    }
-
-    function getRoomPrice(address _address) public view returns(uint){
-        return rooms[_address].price;
     }
 
     function echoAccount(address _address) public pure returns(address){
