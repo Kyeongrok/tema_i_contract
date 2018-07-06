@@ -1,16 +1,7 @@
 const Room = artifacts.require("./Room.sol");
 const Reservation = artifacts.require("./Reservation.sol");
 
-
 contract('Room', (accounts) => {
-    it("echo address", () => {
-        return Room.deployed().then(instance => {
-            instance.echoAccount(accounts[0]).then((item)=>{
-                assert.equal(accounts[0], item);
-             });
-        });
-    });
-
     it("reserve", () => {
         return Room.deployed().then(instance => {
             // getRoom()
