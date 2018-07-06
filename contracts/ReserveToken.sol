@@ -56,4 +56,8 @@ contract ReserveToken {
         emit RegistRoom(msg.sender, _title, _price);
     }
 
+    function echoAccount(address _address) public pure returns(address){
+        return _address;
+    }
+
 }

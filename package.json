@@ -8,9 +8,10 @@
   },
   "scripts": {
     "start": "babel-node index.js",
-    "start2": "babel-node index2.js",
+    "cnm": "truffle migration",
     "test": "truffle test",
     "build": "babel index.js",
+    "deploy": "truffle migrate --network development --compile-all --reset",
     "babel-version": "babel --version"
   },
   "keywords": [

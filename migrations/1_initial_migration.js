@@ -1,5 +1,6 @@
-var Migrations = artifacts.require("./Migrations.sol");
+var ReserveToken = artifacts.require("./ReserveToken.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(Migrations);
+    deployer.deploy(ReserveToken);
 };
+

@@ -1,11 +1,17 @@
 const ReserveToken = artifacts.require("./ReserveToken.sol");
 
-contract('ReserveToken', function(accounts) {
-    // it("first case", () => {
-    //     return MetaCoin.deployed().then((instance) => {
-    //         return instance.getBalance.call(accounts[0]);
-    //     })
-    // }).then((balance) =>{
-    //     console.log(balance);
-    // });
+contract('ReserveToken', (accounts) => {
+    it("first case", () => {
+        ReserveToken.deployed().then((instance) => {
+
+            console.log(accounts[0]);
+
+            instance.registRoom("hello", 100);
+            instance.echoAddress(accounts[0]).then((item)=>{
+                console.log(item);
+            });
+
+        });
+
+    });
 });
