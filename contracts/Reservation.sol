@@ -13,6 +13,7 @@ contract Reservation is Room, Reputation {
     mapping(address => ReservationInfo) public reserves;
 
     TemaToken temaToken;
+    uint256 public reward = 10;
 
     struct ReservationInfo {
         address host;
@@ -24,7 +25,7 @@ contract Reservation is Room, Reputation {
 
     event NewReserve(address _host, address _guest, string from, uint _duration);
 
-    constructor(address _temaTokenAddress) public{
+    constructor(address _temaTokenAddress) public {
         temaToken = TemaToken(_temaTokenAddress);
     }
 
@@ -47,19 +48,27 @@ contract Reservation is Room, Reputation {
         emit NewReserve(_host, guest, _from, _duration);
     }
 
-    function checkout() public {
+    function checkout(string _comment, uint8 _grade) public {
         ReservationInfo storage reservation = reserves[msg.sender];
         // 체크인 상태인지 확인
         require(reservation.state == ReservationState.CheckedIn);
         // 체크아웃으로 변경
         reservation.state = ReservationState.CheckedOut;
+        // 평판 작성
+        setHostReputation(reservation.host, _comment, _grade);
+        /*        // 평판 작성 보상
+                temaToken.transferFrom(this, msg.sender, reward);*/
     }
 
-    function claim(address _from) public {
+    function claim(address _from, string _comment, uint8 _grade) public {
         ReservationInfo storage reservation = reserves[_from];
         // 체크아웃 상태인지 확인
         require(reservation.state == ReservationState.CheckedOut);
         // 호스트에게 토큰 전달
         temaToken.transferFrom(_from, msg.sender, reservation.totalPrice);
+        // 평판 작성
+        setGuestReputation(_from, _comment, _grade);
+        /*        // 평판 작성 보상
+                temaToken.transferFrom(this, msg.sender, reward);*/
     }
 }
