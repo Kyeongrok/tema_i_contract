@@ -33,10 +33,10 @@ contract ReserveToken {
 
     function reserve(address _host, string _from, string _to) public{
         address guest = msg.sender;
-        Reserve storage reserve = reserves[guest];
-        reserve.host = _host;
-        reserve.from = _from;
-        reserve.to = _to;
+        Reserve storage reservation = reserves[guest];
+        reservation.host = _host;
+        reservation.from = _from;
+        reservation.to = _to;
 
         emit NewReserve(_host, guest, _from, _to);
     }
