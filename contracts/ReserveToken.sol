@@ -2,6 +2,8 @@ pragma solidity ^0.4.18;
 
 contract ReserveToken {
 
+    address public host;
+
     mapping(address => Reserve) public reserves;
     mapping(address => Room) public rooms;
 
@@ -22,10 +24,10 @@ contract ReserveToken {
     event NewReserve(address _host, address _guest, string from, string to);
     event RegistRoom(address _address, string _title, uint price);
 
-
     constructor() public{
-
+        host = msg.sender;
     }
+
 
     function roomCount() public view returns (uint) {
         return roomByIndex.length;
@@ -56,8 +58,24 @@ contract ReserveToken {
         emit RegistRoom(msg.sender, _title, _price);
     }
 
+    function getRoomName(address _address) public view returns(string){
+        return rooms[_address].title;
+    }
+
+    function getRoomPrice(address _address) public view returns(uint){
+        return rooms[_address].price;
+    }
+
     function echoAccount(address _address) public pure returns(address){
         return _address;
+    }
+
+    function myAccount() public view returns(address){
+        return msg.sender;
+    }
+
+    function getHost() public returns(address){
+        return host;
     }
 
 }
