@@ -6,8 +6,8 @@ import "./TemaToken.sol";
 contract ReservationContract {
     mapping(address => Reservation) public reserves;
 
-    TemaToken temaTokenAddress;
-    ReserveToken reserveTokenAddress;
+    TemaToken temaToken;
+    ReserveToken reserveToken;
 
     struct Reservation {
         address host;
@@ -17,9 +17,9 @@ contract ReservationContract {
 
     event NewReserve(address _host, address _guest, string from, uint _duration);
 
-    constructor(TemaToken _temaTokenAddress, ReserveToken _reserveTokenAddress) public{
-        temaTokenAddress = _temaTokenAddress;
-        reserveTokenAddress = _reserveTokenAddress;
+    constructor(address _temaTokenAddress, address _reserveTokenAddress) public{
+        temaToken = TemaToken(_temaTokenAddress);
+        reserveToken = ReserveToken(_reserveTokenAddress);
     }
 
     function reserve(address _host, string _from, uint _duration) public{
