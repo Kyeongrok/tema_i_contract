@@ -21,8 +21,8 @@ contract Reservation is Room, Reputation {
 
     event NewReserve(address _host, address _guest, string from, uint _duration);
 
-    constructor(TemaToken _temaToken) public{
-        temaToken = _temaToken;
+    constructor(address _temaTokenAddress) public{
+        temaToken = TemaToken(_temaTokenAddress);
     }
 
     function reserve(address _host, string _from, uint _duration) public{

@@ -3,10 +3,10 @@ const TemaToken = artifacts.require("./TemaToken.sol");
 contract('TemaToken', (accounts) => {
     it("mint", () => {
         return TemaToken.deployed().then(temaToken => {
-            temaToken.mint("0xf0b2e4237bb53ec4b7f2428c113d4ec266290602", 1000);
+            temaToken.mint("0x5E0358F7C455B58E56dD35C4FB721fA315c57Df8", 10);
 
-            return temaToken.balanceOf("0xf0b2e4237bb53ec4b7f2428c113d4ec266290602")
-                .then(balance => assert.equal(1000, balance));
+            return temaToken.balanceOf("0x5E0358F7C455B58E56dD35C4FB721fA315c57Df8")
+                .then(balance => assert.equal(10, balance));
 
         });
     });
