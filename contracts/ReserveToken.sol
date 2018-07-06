@@ -13,6 +13,7 @@ contract ReserveToken {
     }
 
     struct Room{
+        address host;
         string title;
         uint price;
     }
@@ -41,6 +42,7 @@ contract ReserveToken {
         Room storage room = rooms[msg.sender];
         room.title = _title;
         room.price = _price;
+        room.host = msg.sender;
 
         roomByIndex.push(room);
 
