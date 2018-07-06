@@ -2,14 +2,14 @@ pragma solidity ^0.4.24;
 
 import "./Room.sol";
 import "./TemaToken.sol";
+import "./Reputation.sol";
 
-contract Reservation {
-    mapping(address => Reservation) public reserves;
+contract Reservation is Room, Reputation {
+    mapping(address => ReservationInfo) public reserves;
 
     TemaToken temaToken;
-    ReserveToken reserveToken;
 
-    struct Reservation {
+    struct ReservationInfo {
         address host;
         string from;
         uint duration;
@@ -19,12 +19,11 @@ contract Reservation {
 
     constructor() public{
         temaToken = new TemaToken();
-        reserveToken = new ReserveToken();
     }
 
     function reserve(address _host, string _from, uint _duration) public{
         address guest = msg.sender;
-        Reservation storage reservation = reserves[guest];
+        ReservationInfo storage reservation = reserves[guest];
         reservation.host = _host;
         reservation.from = _from;
         reservation.duration = _duration;
