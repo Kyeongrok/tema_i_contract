@@ -22,8 +22,7 @@ https://truffleframework.com/ganache
 2. balanceOf로 토큰 확인
 
 ### TemeToken Owner 이전
-1.TemaTokenMarket에게 이전 
-(fallback, buyToken 시 mint를 호출할 수 있도록)
+1. TemaTokenMarket에게 이전 (fallback, buyToken 시 mint를 호출할 수 있도록)
 2. owner 확인
 
 ### 방 등록 (호스트)
