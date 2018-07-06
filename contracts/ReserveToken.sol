@@ -2,7 +2,6 @@ pragma solidity ^0.4.24;
 
 contract ReserveToken {
 
-    address public host;
 
     mapping(address => Room) public rooms;
 
@@ -17,7 +16,7 @@ contract ReserveToken {
     event RegistRoom(address _address, string _title, uint price);
 
     constructor() public{
-        host = msg.sender;
+
     }
 
 
@@ -52,8 +51,5 @@ contract ReserveToken {
         return msg.sender;
     }
 
-    function getHost() public returns(address){
-        return host;
-    }
 
 }

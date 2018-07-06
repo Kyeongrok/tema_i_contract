@@ -9,18 +9,6 @@ contract('ReserveToken', (accounts) => {
         });
     });
 
-    it("reserve and count", () => {
-        return ReserveToken.deployed().then((instance) => {
-            instance.reserve(accounts[0], "7-1", "7-2")
-                .then(result => {
-                    return instance.roomCount();
-                })
-                .then(count => {
-                    console.log(`count: ${count}`)
-                    assert.equal(0, count);
-                });
-        });
-    });
 
     it("from", () => {
         return ReserveToken.deployed().then(instance => {
