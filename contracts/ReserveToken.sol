@@ -1,4 +1,4 @@
-pragma solidity ^0.4.0;
+pragma solidity ^0.4.18;
 
 contract ReserveToken {
 
@@ -26,15 +26,15 @@ contract ReserveToken {
     }
 
     function reserve(address _address, string _from, string _to){
-        NewReserve storage reserve = reserves[_address];
+        Reserve storage reserve = reserves[_address];
         reserve.from = _from;
         reserve.to = _to;
 
         emit NewReserve(_address, _from, _to);
     }
 
-    function reserveOf(address _address) public {
-        return reserves[_address];
+    function reserveOf(address _address) public returns(string from){
+        return reserves[_address].from;
     }
 
     function registRoom(string _title, uint _price) public{
