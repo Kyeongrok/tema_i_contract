@@ -27,6 +27,10 @@ contract ReserveToken {
 
     }
 
+    function roomCount() public view returns (uint) {
+        return roomByIndex.length;
+    }
+
     function reserve(address _host, string _from, string _to) public{
         address guest = msg.sender;
         Reserve storage reserve = reserves[guest];
