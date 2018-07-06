@@ -12,24 +12,23 @@ contract ReservationContract {
     struct Reservation {
         address host;
         string from;
-        string to;
+        uint duration;
     }
 
-    event NewReserve(address _host, address _guest, string from, string to);
+    event NewReserve(address _host, address _guest, string from, uint _duration);
 
     constructor(TemaToken _temaTokenAddress, ReserveToken _reserveTokenAddress) public{
         temaTokenAddress = _temaTokenAddress;
         reserveTokenAddress = _reserveTokenAddress;
     }
 
-    function reserve(address _host, string _from, string _to) public{
+    function reserve(address _host, string _from, uint _duration) public{
         address guest = msg.sender;
         Reservation storage reservation = reserves[guest];
         reservation.host = _host;
         reservation.from = _from;
-        reservation.to = _to;
+        reservation.duration = _duration;
 
-        emit NewReserve(_host, guest, _from, _to);
+        emit NewReserve(_host, guest, _from, _duration);
     }
-
 }
