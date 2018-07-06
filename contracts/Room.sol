@@ -25,7 +25,7 @@ contract Room {
     }
 
     function registRoom(string _title, uint _price) public{
-        Room storage room = rooms[msg.sender];
+        RoomInfo storage room = rooms[msg.sender];
         room.title = _title;
         room.price = _price;
         room.host = msg.sender;
