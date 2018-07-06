@@ -21,11 +21,11 @@ contract ReserveToken {
     event RegistRoom(address _address, string _title, uint price);
 
 
-    function ReserveToken(){
+    constructor() public{
 
     }
 
-    function reserve(address _address, string _from, string _to){
+    function reserve(address _address, string _from, string _to) public{
         Reserve storage reserve = reserves[_address];
         reserve.from = _from;
         reserve.to = _to;
@@ -33,7 +33,7 @@ contract ReserveToken {
         emit NewReserve(_address, _from, _to);
     }
 
-    function reserveOf(address _address) public returns(string from){
+    function reserveOf(address _address) public view returns(string from){
         return reserves[_address].from;
     }
 
