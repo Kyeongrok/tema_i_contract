@@ -1,13 +1,13 @@
 pragma solidity ^0.4.24;
 
-contract ReserveToken {
+contract Room {
 
 
-    mapping(address => Room) public rooms;
+    mapping(address => RoomInfo) public rooms;
 
-    Room[] public roomByIndex;
+    RoomInfo[] public roomByIndex;
 
-    struct Room{
+    struct RoomInfo {
         address host;
         string title;
         uint price;

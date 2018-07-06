@@ -1,9 +1,9 @@
 pragma solidity ^0.4.24;
 
-import "./ReserveToken.sol";
+import "./Room.sol";
 import "./TemaToken.sol";
 
-contract ReservationContract {
+contract Reservation {
     mapping(address => Reservation) public reserves;
 
     TemaToken temaToken;

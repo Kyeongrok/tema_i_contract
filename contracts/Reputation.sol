@@ -1,6 +1,6 @@
 pragma solidity ^0.4.24;
 
-contract ReputationContract {
+contract Reputation {
     enum Grade {VeryGood, Good, Normal, NotBad, Bad}
 
     struct  Reputation {
