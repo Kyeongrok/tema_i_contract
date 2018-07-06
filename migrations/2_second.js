@@ -1,8 +1,8 @@
-var ReservationContract = artifacts.require("./ReservationContract.sol");
-var ReserveToken = artifacts.require("./ReserveToken.sol");
+var Reservation = artifacts.require("./Reservation.sol");
+var Room = artifacts.require("./Room.sol");
 
 
 module.exports = function(deployer) {
-    deployer.deploy(ReserveToken);
-    deployer.deploy(ReservationContract);
+    deployer.deploy(Room);
+    deployer.deploy(Reservation);
 };

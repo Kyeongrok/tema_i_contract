@@ -1,10 +1,10 @@
-const ReserveToken = artifacts.require("./ReserveToken.sol");
-const ReservationContract = artifacts.require("./ReservationContract.sol");
+const Room = artifacts.require("./Room.sol");
+const Reservation = artifacts.require("./Reservation.sol");
 
 
-contract('ReserveToken', (accounts) => {
+contract('Room', (accounts) => {
     it("echo address", () => {
-        return ReserveToken.deployed().then(instance => {
+        return Room.deployed().then(instance => {
             instance.echoAccount(accounts[0]).then((item)=>{
                 assert.equal(accounts[0], item);
              });
@@ -12,13 +12,13 @@ contract('ReserveToken', (accounts) => {
     });
 
     it("reserve", () => {
-        return ReserveToken.deployed().then(instance => {
+        return Room.deployed().then(instance => {
             // getRoom()
-            return ReserveToken.deployed().then(instance => {
+            return Room.deployed().then(instance => {
                 instance.registRoom("room-1", 100);
                 instance.roomCount().then(count => console.log("roomCount:",count));
                 instance.myAccount().then(addr => {
-                    return ReservationContract.deployed().then(rc =>{
+                    return Reservation.deployed().then(rc =>{
                         rc.reserve(addr, "7-5", 1);
                         rc.reserves(addr).then(item=>{
                             assert.equal('7-5', item[1]);
