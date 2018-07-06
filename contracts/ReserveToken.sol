@@ -8,6 +8,7 @@ contract ReserveToken {
     Room[] public roomByIndex;
 
     struct Reserve{
+        address host;
         string from;
         string to;
     }
@@ -18,7 +19,7 @@ contract ReserveToken {
         uint price;
     }
 
-    event NewReserve(address _address, string from, string to);
+    event NewReserve(address _host, address _guest, string from, string to);
     event RegistRoom(address _address, string _title, uint price);
 
 
@@ -26,12 +27,14 @@ contract ReserveToken {
 
     }
 
-    function reserve(address _address, string _from, string _to) public{
-        Reserve storage reserve = reserves[_address];
+    function reserve(address _host, string _from, string _to) public{
+        address guest = msg.sender;
+        Reserve storage reserve = reserves[guest];
+        reserve.host = _host;
         reserve.from = _from;
         reserve.to = _to;
 
-        emit NewReserve(_address, _from, _to);
+        emit NewReserve(_host, guest, _from, _to);
     }
 
     function reserveOf(address _address) public view returns(string from){
