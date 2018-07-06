@@ -17,9 +17,9 @@ contract ReservationContract {
 
     event NewReserve(address _host, address _guest, string from, uint _duration);
 
-    constructor(address _temaTokenAddress, address _reserveTokenAddress) public{
-        temaToken = TemaToken(_temaTokenAddress);
-        reserveToken = ReserveToken(_reserveTokenAddress);
+    constructor() public{
+        temaToken = new TemaToken();
+        reserveToken = new ReserveToken();
     }
 
     function reserve(address _host, string _from, uint _duration) public{
