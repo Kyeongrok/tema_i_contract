@@ -21,7 +21,7 @@ contract Reputation {
         string _comment,
         uint8 _grade
     )
-        public
+        internal
     {
         require(_host != msg.sender);
         ReputationInfo memory reputation = ReputationInfo(msg.sender, _comment, Grade(_grade));
@@ -34,7 +34,7 @@ contract Reputation {
         string _comment,
         uint8 _grade
     )
-        public
+        internal
     {
         require(_guest != msg.sender);
         ReputationInfo memory reputation = ReputationInfo(msg.sender, _comment, Grade(_grade));
@@ -50,7 +50,6 @@ contract Reputation {
         return hostReputation[_host].length;
     }
 
-    // 등록 된 게스트 평판 개수
     function getGuestReputationNumber(address _guest)
     public
     view
@@ -59,7 +58,6 @@ contract Reputation {
         return guestReputation[_guest].length;
     }
 
-    // 등록 된 호스트 평판 읽기
     function getHostReputation(address _host, uint256 _id)
     public
     view
@@ -69,7 +67,6 @@ contract Reputation {
         return (reputation.writer, reputation.comment, reputation.grade);
     }
 
-    // 등록 된 게스트 평판 읽기
     function getGuestReputation(address _guest, uint256 _id)
     public
     view
