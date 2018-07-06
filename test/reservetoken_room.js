@@ -12,11 +12,8 @@ contract('ReserveToken', (accounts) => {
             instance.registRoom("room-1", 100);
             instance.roomCount().then(count => console.log("roomCount:",count));
             instance.myAccount().then(addr => {
-                instance.getRoomName(addr).then(name => {
-                    assert.equal("room-1", name)
-                });
-                instance.getRoomPrice(addr).then(price => {
-                    assert.equal(100, price);
+                instance.rooms(addr).then(room=>{
+                    assert.equal('room-1', room[1]);
                 });
             });
 
