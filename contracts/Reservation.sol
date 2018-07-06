@@ -2,6 +2,7 @@ pragma solidity ^0.4.24;
 
 import "./Room.sol";
 import "./TemaToken.sol";
+import "./TemaTokenMarket.sol";
 import "./Reputation.sol";
 
 contract Reservation is Room, Reputation {
@@ -20,8 +21,8 @@ contract Reservation is Room, Reputation {
 
     event NewReserve(address _host, address _guest, string from, uint _duration);
 
-    constructor() public{
-        temaToken = new TemaToken();
+    constructor(TemaToken _temaToken) public{
+        temaToken = _temaToken;
     }
 
     function reserve(address _host, string _from, uint _duration) public{
@@ -46,5 +47,9 @@ contract Reservation is Room, Reputation {
 
         // 체크아웃으로 변경
         reservation.state = ReservationState.CheckedOut;
+    }
+
+    function claim(address _from, uint256 _value) public {
+        temaToken.transferFrom(_from, msg.sender, _value);
     }
 }
